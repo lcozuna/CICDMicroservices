@@ -27,13 +27,13 @@ jobs:
         run: mvn -f MicroserviceClient/pom.xml clean install -DskipTests=true
       
       - name: Build Micro Item
-        run: mvn -f MicroServiceItem/pom.xml clean install -DskipTests=true
+        run: mvn -f MicroserviceItem/pom.xml clean install -DskipTests=true
 
       - name: Build Micro Config
         run: mvn -f MicroserviceConfig/pom.xml clean install -DskipTests=true
 
       - name: Build Micro Eureka
-        run: mvn -f MicroserviceEureka/pom.xml clean install -DskipTests=true
+        run: mvn -f MicroServiceEureka/pom.xml clean install -DskipTests=true
 
 
       # Construccion de imagenes
@@ -47,11 +47,11 @@ jobs:
         
       - name: Build image eureka
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/mes:eureka .
-        working-directory: MicroserviceEureka
+        working-directory: MicroServiceEureka
 
       - name: Build image item
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/mes:item .
-        working-directory: MicroServiceItem
+        working-directory: MicroserviceItem
 
 
       #Login docker
